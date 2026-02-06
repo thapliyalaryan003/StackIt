@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Stackit</title>
+        <link rel="stylesheet" href="sidepanel.css">
+    </head>
+    <body>
+        <div id="api-key-screen">
+            <h3> Stackit</h3>
+            <p>Enter your Gemini API Key to start.</p>
+            <input
+                type="password"
+                id="apiKeyInput"
+                name="Gemini API Key"
+                minlength="32"
+                maxlength="164"
+                size= 20
+                placeholder="Enter API Key Here"/>
+            <button id="saveBtn"> Start Stacking </button>
+        </div>
+        
+        
+        <div id="chat-screen" class="hidden">
+            <div id="stack-container"></div>
+
+            <div id="active-work-area">
+                <div class="card-query-label">Current Selection</div>
+                <textarea id="prompt" placeholder="Ask Stackit" rows="3"></textarea>
+
+                <div id="stream-container" class="hidden">
+                    <div class="card-response-label">Gemini is typing...</div>
+                    <div id="response-stream-display"></div>
+                </div>
+
+                <button id="apiCallBtn">Go</button>
+            </div>
+
+            <button id="changeKeyBtn">Change API Key</button>
+        </div>
+        
+    
+
+
+
+        <script src="sidepanel.js"></script>
+    </body>
+</html>

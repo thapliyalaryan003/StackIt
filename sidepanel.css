@@ -1,0 +1,170 @@
+/* sidepanel.css */
+
+/* 1. BASE STYLES (LIGHT MODE) */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 16px;
+    margin: 0;
+    background-color: #ffffff; 
+    color: #333333;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+h3 {
+    margin-top: 0;
+    font-weight: 500;
+    color: #202124;
+}
+
+p {
+    color: #5f6368;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #f1f3f4;
+    border: 1px solid #dadce0;
+    color: #202124;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-family: inherit;
+    resize: vertical;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: #4285f4;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    background-color: #4285f4; 
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #3367d6;
+}
+
+#changeKeyBtn, #apiCallBtn {
+    background-color: transparent;
+    border: 1px solid #dadce0;
+    color: #5f6368;
+    margin-top: 15px;
+}
+
+/* 2. STACK & CARD STYLES */
+#stack-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.stack-card {
+    border: 1px solid #dadce0;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.card-query {
+    background-color: #e8f0fe;
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #1a73e8;
+    border-bottom: 1px solid #dadce0;
+}
+
+.card-response {
+    padding: 12px;
+    font-size: 14px;
+    line-height: 1.5;
+    white-space: pre-wrap; /* Crucial for AI text formatting */
+}
+
+/* 3. DIVERGENT NODE STYLES */
+.divergent-box {
+    margin: 10px;
+    border-radius: 4px;
+}
+
+.followup-input {
+    margin-bottom: 0 !important;
+    font-size: 13px;
+    background-color: #ffffff;
+}
+
+.followup-go {
+    width: auto !important; /* Overrides global button width */
+    padding: 6px 15px !important;
+    margin-top: 8px;
+    font-size: 12px;
+}
+
+/* 4. SYSTEM OVERRIDE (DARK MODE) */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #1e1e1e; 
+        color: #e0e0e0;
+    }
+
+    h3 {
+        color: #ffffff;
+    }
+
+    p {
+        color: #aaaaaa;
+    }
+
+    input, textarea {
+        background-color: #2d2d2d;
+        border: 1px solid #454545;
+        color: #ffffff;
+    }
+
+    #changeKeyBtn, #apiCallBtn {
+        border: 1px solid #454545;
+        color: #aaaaaa;
+    }
+
+    #changeKeyBtn:hover, #apiCallBtn:hover {
+        background-color: #2d2d2d;
+        color: #ffffff;
+    }
+
+    /* Dark Mode for Cards */
+    .stack-card { 
+        background-color: #2d2d2d; 
+        border-color: #454545; 
+    }
+    
+    .card-query { 
+        background-color: #1a273a; 
+        color: #8ab4f8; 
+        border-color: #454545; 
+    }
+
+    .followup-input {
+        background-color: #1e1e1e;
+    }
+}
+
+/* UTILITIES */
+.hidden {
+    display: none !important;
+}
