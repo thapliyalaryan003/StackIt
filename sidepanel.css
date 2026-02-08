@@ -1,170 +1,284 @@
-/* sidepanel.css */
+/* 1. Variables & Global Styles */
+:root {
+    --bg-main: #ffffff;
+    --bg-card-user: #f0f4f9;
+    --text-primary: #1f1f1f;
+    --text-secondary: #444746;
+    --accent: #0b57d0;
+    --border-color: #dee2e6;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --child-bg: #f8fbff;
+    --child-border: #0b57d0;
+    --thread-line: #e0e0e0;
+}
 
-/* 1. BASE STYLES (LIGHT MODE) */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-main: #131314;
+        --bg-card-user: #1e1e20;
+        --text-primary: #e3e3e3;
+        --text-secondary: #c4c7c5;
+        --accent: #a8c7fa; /* Google Blue 200 */
+        --border-color: #444746;
+        --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        --child-bg: #1a2736;
+        --child-border: #a8c7fa;
+        --thread-line: #333333;
+    }
+}
+
+/* 2. Layout Structure */
+html, body { 
+    width: 100%;
+    margin: 0; 
+    padding: 0; 
+    overflow-x: hidden;
+    height: 100vh;
+}
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    padding: 16px;
-    margin: 0;
-    background-color: #ffffff; 
-    color: #333333;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-h3 {
-    margin-top: 0;
-    font-weight: 500;
-    color: #202124;
-}
-
-p {
-    color: #5f6368;
-    font-size: 13px;
-    line-height: 1.4;
-}
-
-input, textarea {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    background-color: #f1f3f4;
-    border: 1px solid #dadce0;
-    color: #202124;
-    border-radius: 6px;
-    box-sizing: border-box;
-    font-family: inherit;
-    resize: vertical;
-}
-
-input:focus, textarea:focus {
-    outline: none;
-    border-color: #4285f4;
-}
-
-button {
-    width: 100%;
-    padding: 12px;
-    margin-top: 5px;
-    background-color: #4285f4; 
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background-color 0.2s;
-}
-
-button:hover {
-    background-color: #3367d6;
-}
-
-#changeKeyBtn, #apiCallBtn {
-    background-color: transparent;
-    border: 1px solid #dadce0;
-    color: #5f6368;
-    margin-top: 15px;
-}
-
-/* 2. STACK & CARD STYLES */
-#stack-container {
+    font-family: 'Segoe UI', Roboto, -apple-system, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    margin-top: 20px;
 }
 
-.stack-card {
-    border: 1px solid #dadce0;
+/* 3. API Key / Onboarding Screen */
+#api-key-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 40px 24px;
+    text-align: center;
+    background: var(--bg-main);
+}
+
+#api-key-screen h3 {
+    font-size: 32px;
+    margin-bottom: 8px;
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+#api-key-screen p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+    max-width: 260px;
+    line-height: 1.5;
+}
+
+#apiKeyInput {
+    width: 100%;
+    max-width: 280px;
+    padding: 14px 18px;
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    background: var(--bg-card-user);
+    color: var(--text-primary);
+    font-size: 14px;
+    margin-bottom: 20px;
+    transition: all 0.2s ease;
+}
+
+#apiKeyInput:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(168, 199, 250, 0.2);
+    background: var(--bg-main);
+}
+
+#saveBtn {
+    width: 100%;
+    max-width: 280px;
+    background: var(--accent);
+    color: #131314; 
+    border: none;
+    padding: 14px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    transition: transform 0.1s, opacity 0.2s;
+}
+
+#saveBtn:hover {
+    opacity: 0.95;
+    transform: translateY(-1px);
+}
+
+/* 4. Chat Screen Header */
+.header {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+    height: 56px;
+    border-bottom: 1px solid var(--border-color);
+    background: var(--bg-main);
+    z-index: 10;
+}
+
+.header span {
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--accent);
+    letter-spacing: -0.3px;
+}
+
+#changeKeyBtn {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 6px 12px;
     border-radius: 8px;
-    background-color: #f8f9fa;
-    overflow: hidden;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#changeKeyBtn:hover {
+    background: var(--bg-card-user);
+    color: var(--text-primary);
+    border-color: var(--text-secondary);
+}
+
+/* 5. Messages Container */
+#stack-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px 16px;
+    scroll-behavior: smooth;
+    background-image: linear-gradient(var(--thread-line), var(--thread-line));
+    background-size: 2px 100%;
+    background-repeat: no-repeat;
+    background-position: 32px 0;
+}
+
+/* 6. Message Card Styles */
+.stack-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    margin-bottom: 24px;
+    position: relative;
+    transition: all 0.2s ease;
 }
 
 .card-query {
-    background-color: #e8f0fe;
-    padding: 8px 12px;
-    font-size: 12px;
-    font-weight: 600;
-    color: #1a73e8;
-    border-bottom: 1px solid #dadce0;
-}
-
-.card-response {
-    padding: 12px;
-    font-size: 14px;
-    line-height: 1.5;
-    white-space: pre-wrap; /* Crucial for AI text formatting */
-}
-
-/* 3. DIVERGENT NODE STYLES */
-.divergent-box {
-    margin: 10px;
-    border-radius: 4px;
-}
-
-.followup-input {
-    margin-bottom: 0 !important;
+    align-self: flex-start;
+    margin-left: 45px;
+    background: var(--bg-card-user);
+    padding: 8px 14px;
+    border-radius: 12px;
     font-size: 13px;
-    background-color: #ffffff;
+    font-weight: 500;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
 }
 
-.followup-go {
-    width: auto !important; /* Overrides global button width */
-    padding: 6px 15px !important;
-    margin-top: 8px;
-    font-size: 12px;
+.card-response { 
+    font-size: 14px; 
+    line-height: 1.6; 
+    padding: 12px 16px;
+    background: var(--bg-main);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    align-self: flex-start;
+    width: calc(100% - 60px);
+    margin-left: 45px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.03);
 }
 
-/* 4. SYSTEM OVERRIDE (DARK MODE) */
-@media (prefers-color-scheme: dark) {
-    body {
-        background-color: #1e1e1e; 
-        color: #e0e0e0;
-    }
-
-    h3 {
-        color: #ffffff;
-    }
-
-    p {
-        color: #aaaaaa;
-    }
-
-    input, textarea {
-        background-color: #2d2d2d;
-        border: 1px solid #454545;
-        color: #ffffff;
-    }
-
-    #changeKeyBtn, #apiCallBtn {
-        border: 1px solid #454545;
-        color: #aaaaaa;
-    }
-
-    #changeKeyBtn:hover, #apiCallBtn:hover {
-        background-color: #2d2d2d;
-        color: #ffffff;
-    }
-
-    /* Dark Mode for Cards */
-    .stack-card { 
-        background-color: #2d2d2d; 
-        border-color: #454545; 
-    }
-    
-    .card-query { 
-        background-color: #1a273a; 
-        color: #8ab4f8; 
-        border-color: #454545; 
-    }
-
-    .followup-input {
-        background-color: #1e1e1e;
-    }
+/* 7. Follow-up Boxes & Child Cards */
+.divergent-box {
+    margin: 10px 0 10px 60px;
+    padding: 12px;
+    background: var(--bg-main);
+    border: 2px solid var(--accent);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    z-index: 5;
+    animation: popIn 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* UTILITIES */
-.hidden {
+.child-card {
+    display: block;
+    margin: 15px 0 15px 40px;
+    padding: 12px;
+    border-left: 3px solid var(--child-border);
+    background-color: var(--child-bg);
+    border-radius: 0 12px 12px 0;
+    position: relative;
+    box-shadow: var(--shadow);
+}
+
+/* 8. Input Area */
+#active-work-area {
+    padding: 16px;
+    border-top: 1px solid var(--border-color);
+    background: var(--bg-main);
+}
+
+#prompt {
+    width: 100%;
+    min-height: 48px;
+    padding: 12px 48px 12px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    background: var(--bg-card-user);
+    color: var(--text-primary);
+    font-size: 14px;
+    resize: none;
+    transition: all 0.2s;
+}
+
+#prompt:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: var(--bg-main);
+}
+
+#apiCallBtn {
+    background: var(--accent);
+    color: #000000;
+    border: none;
+    border-radius: 50%;
+    width: 32px; height: 32px;
+    position: absolute; right: 8px; bottom: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* 9. Utility & Collapse */
+.hidden { display: none !important; }
+
+.stack-card.collapsed {
+    max-height: 54px !important; 
+    overflow: hidden !important;
+    contain: paint;
+    opacity: 0.6;
+}
+
+.stack-card.collapsed > .card-response,
+.stack-card.collapsed > .stack-card {
     display: none !important;
+}
+
+@keyframes popIn {
+    from { opacity: 0; transform: translateY(10px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+#stack-container::-webkit-scrollbar { width: 6px; }
+#stack-container::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 10px;
 }

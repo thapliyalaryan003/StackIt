@@ -22,9 +22,15 @@
         
         
         <div id="chat-screen" class="hidden">
+            <div class="header">
+                <span style="font-weight: bold; font-size: 14px;">Stackit</span>
+                 <button id="changeKeyBtn">Change API Key</button>
+            </div>
+            
             <div id="stack-container"></div>
 
             <div id="active-work-area">
+                <div class="input-wrapper">
                 <div class="card-query-label">Current Selection</div>
                 <textarea id="prompt" placeholder="Ask Stackit" rows="3"></textarea>
 
@@ -33,10 +39,9 @@
                     <div id="response-stream-display"></div>
                 </div>
 
-                <button id="apiCallBtn">Go</button>
+                <button id="apiCallBtn">ᐅ</button>
+                </div>
             </div>
-
-            <button id="changeKeyBtn">Change API Key</button>
         </div>
         
     

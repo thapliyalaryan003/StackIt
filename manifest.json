@@ -11,7 +11,7 @@
         "128": "images/icon-128.png"
     },
     "action": {
-        "default_title": "Stackit Control Center",
+        "default_title": "Stackit",
         "default_popup": "popup.html",
         "default_icon": {
             "16": "images/icon-16.png",
