@@ -33,7 +33,7 @@ Instead of losing context in long, drifting conversations, Stackit allows you to
 
 1.  **Clone the Repo:**
     ```bash
-    git clone [https://github.com/yourusername/stackit.git](https://github.com/yourusername/stackit.git)
+    git clone https://github.com/thapliyalaryan003/StackIt.git
     ```
 2.  **Load in Chrome:**
     * Open `chrome://extensions/`
