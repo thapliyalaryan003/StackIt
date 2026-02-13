@@ -5,6 +5,8 @@ const inputField = document.getElementById('apiKeyInput');
 const changeButton = document.getElementById('changeKeyBtn');
 const apiCallBtn = document.getElementById('apiCallBtn');
 const promptField = document.getElementById('prompt');
+const btnTop = document.getElementById('scrollTopBtn');
+const btnBottom = document.getElementById('scrollBottomBtn');
 
 promptField.addEventListener('input', function() {
     this.style.height = 'auto';
@@ -93,15 +95,11 @@ chrome.storage.session.get(['chat_history'], (res) => {
                 historyCard.className = 'stack-card';
                 // NEW: Tag the card with its index in history
                 historyCard.setAttribute('data-msg-index', index); 
-                
+            
                 historyCard.innerHTML = `
                     <div class="card-query">${userMsg}</div>
-                    <div class="card-response">${msg.parts[0].text
-                        .replace(/\*\*(.*?)\*\*/g, '<b>$1</b>')
-                        .replace(/^\* (.*)/gm, '• $1')
-                        .replace(/\n/g, '<br>')}</div>
+                    <div class="card-response">${marked.parse(msg.parts[0].text)}</div>
                 `;
-                
                 // Re-attach the collapse listener to historical cards
                 historyCard.addEventListener('dblclick', (e) => {
                 e.stopPropagation();
@@ -232,11 +230,7 @@ const activePoint = document.getElementById('active-divergent-point');
                     if (textPart) {
                         fullAiResponse += textPart;
                         // Format on the fly and update the card
-                        responseTarget.innerHTML = fullAiResponse
-                            .replace(/\*\*(.*?)\*\*/g, '<b>$1</b>')
-                            .replace(/^\* (.*)/gm, '• $1')
-                            .replace(/\n/g, '<br>');
-                        
+                        responseTarget.innerHTML = marked.parse(fullAiResponse);
                     }
                 } catch (e) { break; }
             }
@@ -334,6 +328,21 @@ function createDivergentNode(range, textToExplain) {
 // Attach listener to the initial stream display area
 document.getElementById('response-stream-display').addEventListener('mouseup', handleSelection);
 
+// Navigate to the top marker
+btnTop.addEventListener('click', () => {
+    document.getElementById('top-marker').scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'start' 
+    });
+});
+
+// Navigate to the bottom marker
+btnBottom.addEventListener('click', () => {
+    document.getElementById('bottom-marker').scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'end' 
+    });
+});
 
 apiCallBtn.addEventListener('click', apiCall);
 

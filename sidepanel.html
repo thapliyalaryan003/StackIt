@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <title>Stackit</title>
         <link rel="stylesheet" href="sidepanel.css">
+        <script src = "marked.js"></script>
     </head>
     <body>
         <div id="api-key-screen">
@@ -22,11 +23,16 @@
         
         
         <div id="chat-screen" class="hidden">
+            <div id="top-marker"></div>
             <div class="header">
                 <span style="font-weight: bold; font-size: 14px;">Stackit</span>
                  <button id="changeKeyBtn">Change API Key</button>
             </div>
             
+            <div class="scroll-nav">
+            <button id="scrollTopBtn" title="Scroll to Top">↑</button>
+            <button id="scrollBottomBtn" title="Scroll to Bottom">↓</button>
+            </div>
             <div id="stack-container"></div>
 
             <div id="active-work-area">
@@ -41,6 +47,7 @@
 
                 <button id="apiCallBtn">ᐅ</button>
                 </div>
+                <div id="bottom-marker"></div>
             </div>
         </div>
         

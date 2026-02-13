@@ -282,3 +282,45 @@ body {
     background: var(--border-color);
     border-radius: 10px;
 }
+
+/* Top button: Sideways at the top */
+#scrollTopBtn {
+    position: fixed;
+    top: 55px; /* Sits just below the header */
+    right: 12px;
+    z-index: 1000; /* Ensures it stays above the cards */
+}
+
+/* Bottom button: Sideways at the bottom */
+#scrollBottomBtn {
+    position: fixed;
+    bottom: 120px; /* Sits just above the input/textarea area */
+    right: 12px;
+    z-index: 1000;
+}
+
+/* Unified look for both buttons */
+#scrollTopBtn, #scrollBottomBtn {
+    width: 32px;
+    height: 32px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 50%; /* Makes them circular */
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.1s ease;
+}
+
+#scrollTopBtn:hover, #scrollBottomBtn:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.1); /* Slight pop on hover */
+}
+
+#scrollTopBtn:active, #scrollBottomBtn:active {
+    transform: scale(0.9); /* Click feel */
+}
