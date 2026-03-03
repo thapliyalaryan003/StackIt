@@ -251,7 +251,7 @@ body {
     color: #000000;
     border: none;
     border-radius: 50%;
-    width: 32px; height: 32px;
+    width: 36px; height: 36px;
     position: absolute; right: 8px; bottom: 8px;
     cursor: pointer;
     font-weight: bold;
@@ -299,10 +299,26 @@ body {
     z-index: 1000;
 }
 
+#clrStackBtn {
+    position: fixed;
+    bottom: 8px;
+    left: 12px;
+    z-index: 1000;
+}
+#clrStackBtn img {
+    width: 24px;          /* Or '100%' if you want it to fill the button */
+    height: 24px;         /* Match the width to keep it square */
+    object-fit: contain;  /* Now this will actually work! */
+    display: block;       /* Removes extra bottom spacing */
+}
+
+.clear-stack img { font-size: 9px; }
+
+
 /* Unified look for both buttons */
-#scrollTopBtn, #scrollBottomBtn {
-    width: 32px;
-    height: 32px;
+#scrollTopBtn, #scrollBottomBtn, #clrStackBtn {
+    width: 36px;
+    height: 36px;
     background-color: white;
     border: 1px solid #ccc;
     border-radius: 50%; /* Makes them circular */
@@ -316,11 +332,16 @@ body {
     transition: transform 0.1s ease;
 }
 
-#scrollTopBtn:hover, #scrollBottomBtn:hover {
+#scrollTopBtn:hover, #scrollBottomBtn:hover{
     background-color: #f0f0f0;
     transform: scale(1.1); /* Slight pop on hover */
 }
 
-#scrollTopBtn:active, #scrollBottomBtn:active {
+#clrStackBtn:hover{
+    background-color: red;
+    transform: scale(1.1);
+}
+
+#scrollTopBtn:active, #scrollBottomBtn:active, #clrStackBtn:active{
     transform: scale(0.9); /* Click feel */
 }

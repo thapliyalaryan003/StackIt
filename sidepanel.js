@@ -7,6 +7,7 @@ const apiCallBtn = document.getElementById('apiCallBtn');
 const promptField = document.getElementById('prompt');
 const btnTop = document.getElementById('scrollTopBtn');
 const btnBottom = document.getElementById('scrollBottomBtn');
+const clrStackBtn = document.getElementById('clrStackBtn');
 
 promptField.addEventListener('input', function() {
     this.style.height = 'auto';
@@ -343,6 +344,12 @@ btnBottom.addEventListener('click', () => {
         block: 'end' 
     });
 });
+
+clrStackBtn.addEventListener('click',()=>{
+    if(stackContainer.children.length> 0){
+    chrome.storage.session.set({chat_history:[]});
+    stackContainer.replaceChildren();
+}})
 
 apiCallBtn.addEventListener('click', apiCall);
 
